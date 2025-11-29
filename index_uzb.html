@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro AI Advisor - AI-Powered Recommendation Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #0A0A0A;
+            background-color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+         .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #00994C 0%, #FFFFFF 100%);
+            color: #FFFFFF;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #00994C;
+            color: #FFFFFF;
+        }
+        .btn-primary:hover {
+            background-color: #007A3D;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+        }
+        .btn-secondary:hover {
+            background-color: #FFFFFF;
+            color: #00994C;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .section-bg-light {
+            background-color: #F7F7F7;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #1A1A1A;
+        }
+        .problem-cards {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card i {
+            font-size: 3rem;
+            color: #00994C;
+            margin-bottom: 20px;
+        }
+        .solution {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .solution-text {
+            flex: 1;
+        }
+        .solution-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .solution-text ul {
+            list-style: none;
+            padding: 0;
+        }
+        .solution-text li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .highlight-box {
+            background-color: #00994C;
+            color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+        .solution-image {
+            flex: 1;
+        }
+        .solution-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E0E0E0;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: #00994C;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .feature-card i {
+            font-size: 2.5rem;
+            color: #00994C;
+            margin-bottom: 20px;
+        }
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .team-card {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+        }
+        .team-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .team-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .team-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .skill-tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .skill-tag {
+            background-color: #00994C;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        #why-us {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+#why-us .why-left {
+    flex: 1;
+}
+
+#why-us .why-left h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #0A0A0A;
+}
+
+#why-us .why-left p {
+    max-width: 500px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* RIGHT SIDE (cards like Solution section) */
+#why-us .why-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#why-us .why-item {
+    background: #FFFFFF;
+    padding: 22px 25px;
+    border-radius: 18px;
+    box-shadow: 0px 12px 28px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+#why-us .why-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0px 16px 35px rgba(0,0,0,0.12);
+}
+
+#why-us .why-item strong {
+    display: block;
+    font-size: 1.25rem;
+    color: #00994C;
+    margin-bottom: 8px;
+}
+
+#why-us .why-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+#why-us .why-conclusion {
+    margin-top: 40px;
+    padding: 20px 25px;
+    background: linear-gradient(90deg, #00C853, #00994C);
+    color: #FFFFFF; !important;
+    font-weight: 700;
+    font-size: 1.3rem;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0px 14px 30px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+
+#why-us .why-conclusion:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 18px 35px rgba(0,0,0,0.2);
+}
+
+#why-us .cta-icon {
+    font-size: 3rem;
+    transition: transform 0.3s ease;
+}
+
+#why-us .why-conclusion:hover .cta-icon {
+    transform: rotate(-20deg);
+}
+
+#why-us .cta-arrow {
+    font-size: 1.5rem;
+    display: inline-block;
+    transition: transform 0.3s ease, text-shadow 0.6s ease;
+}
+
+#why-us .why-conclusion:hover .cta-arrow {
+    transform: translateX(6px);
+    text-shadow: 0 0 6px rgba(255,255,255,0.8), 0 0 12px rgba(255,255,255,0.5);
+    animation: pulse 1s infinite alternate;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    #why-us {
+        flex-direction: column;
+        text-align: center;
+    }
+    #why-us .why-left p {
+        margin: 0 auto;
+    }
+}
+@keyframes pulse {
+    0% { text-shadow: 0 0 6px rgba(255,255,255,0.8), 0 0 12px rgba(255,255,255,0.5); }
+    100% { text-shadow: 0 0 12px rgba(255,255,255,1), 0 0 18px rgba(255,255,255,0.6); }
+}
+
+        .roadmap {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+        }
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #00994C;
+            z-index: 0;
+        }
+        .roadmap-step {
+            background-color: #FFFFFF;
+            border: 2px solid #00994C;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            position: relative;
+        }
+        .roadmap-step i {
+            font-size: 2rem;
+            color: #00994C;
+        }
+        .roadmap-step p {
+            position: absolute;
+            bottom: 3px;
+            font-size: 0.9rem;
+            text-align: center;
+            width: 114px;
+        }
+        .roadmap-step::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 45%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #00994C;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        .tech-stack {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .tech-item {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #1A1A1A;
+        }
+        .tech-item i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #00994C;
+        }
+        .footer {
+            background-color: #0D0D0D;
+            color: #FFFFFF;
+            padding: 40px 0;
+        }
+        .footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .footer-nav {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-nav a:hover {
+            color: #00994C;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a {
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #00994C;
+        }
+        @media (max-width: 768px) {
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .solution {
+                flex-direction: column;
+            }
+            .roadmap {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+            }
+            .roadmap::before {
+                display: none;
+            }
+            .roadmap-step p {
+                position: absolute;
+                bottom: 3px;
+                font-size: 0.9rem;
+                text-align: center;
+                width: 143px;
+            }
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+        /*Old version */
+
+        /*.container {*/
+        /*    max-width: 1200px;*/
+        /*    margin: 0 auto;*/
+        /*    padding: 0 20px;*/
+        /*}*/
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #00994C;
+        }
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #0A0A0A;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #00994C;
+            transition: width 0.3s ease;
+        }
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+        .lang-switcher {
+            display: flex;
+            gap: 10px;
+        }
+        .lang-switcher a {
+            text-decoration: none;
+            color: #0A0A0A;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .lang-switcher a:hover {
+            color: #00994C;
+        }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #F5F5F5 0%, #FFFFFF 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://via.placeholder.com/1920x1080/00994C/FFFFFF?text=3D+Shapes') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        .hero-content {
+            flex: 1;
+            animation: fadeInLeft 1s ease-out;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #0A0A0A;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #00994C, #00B050);
+            color: #FFFFFF;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #00994C;
+            padding: 15px 30px;
+            border: 2px solid #00994C;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: #00994C;
+            color: #FFFFFF;
+        }
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            animation: fadeInRight 1s ease-out;
+        }
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background-color: #F5F5F5;
+        }
+        .problem h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #0A0A0A;
+        }
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .problem-card {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .problem-card:hover {
+            transform: translateY(-10px);
+        }
+        .problem-card i {
+            font-size: 3rem;
+            color: #00994C;
+            margin-bottom: 20px;
+        }
+        .problem-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        /* Solution Section */
+        .solution {
+            padding: 100px 0;
+            background-color: #FFFFFF;
+        }
+        .solution .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .solution-content {
+            flex: 1;
+        }
+        .solution h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #0A0A0A;
+        }
+        .solution ul {
+            list-style: none;
+            padding: 0;
+        }
+        .solution li {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .solution li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00994C;
+            font-weight: bold;
+        }
+        .solution li.highlight {
+            color: #00994C;
+            font-weight: 600;
+        }
+        .solution-image {
+            flex: 1;
+            text-align: center;
+        }
+        .solution-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: #F5F5F5;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #0A0A0A;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #00994C;
+        }
+        .feature-card i {
+            font-size: 3rem;
+            color: #00994C;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        /* Team Section */
+        .team {
+            padding: 100px 0;
+            background-color: #FFFFFF;
+        }
+        .team h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #0A0A0A;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .team-member {
+            background: #F5F5F5;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        .team-member h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .team-member p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .team-member span {
+            font-size: 0.9rem;
+            color: #00994C;
+        }
+        /* Roadmap Section */
+        .roadmap {
+            padding: 100px 0;
+            background-color: #F5F5F5;
+        }
+        .roadmap h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #0A0A0A;
+        }
+        .roadmap-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #00994C;
+            z-index: -1;
+        }
+        .roadmap-step {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+            position: relative;
+        }
+        .roadmap-step::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left:50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #00994C;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        .roadmap-step i {
+            font-size: 2rem;
+            color: #00994C;
+            margin-bottom: 15px;
+        }
+        .roadmap-step h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        /*!* Tech Stack Section *!*/
+        .tech-stack {
+            padding: 100px 0;
+            background-color: #FFFFFF;
+        }
+        .tech-stack h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: #0A0A0A;
+        }
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .tech-icons i {
+            font-size: 3rem;
+            color: #00994C;
+            transition: transform 0.3s ease;
+        }
+        .tech-icons i:hover {
+            transform: scale(1.1);
+        }
+        /* !*Footer*!*/
+        /*footer {*/
+        /*    background-color: #0A0A0A;*/
+        /*    color: #FFFFFF;*/
+        /*    padding: 50px 0;*/
+        /*}*/
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        /*.footer-logo {*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*    font-weight: 700;*/
+        /*    font-size: 1.5rem;*/
+        /*    color: #00994C;*/
+        /*}*/
+        /*.footer-links {*/
+        /*    display: flex;*/
+        /*    gap: 30px;*/
+        /*}*/
+        /*.footer-links a {*/
+        /*    text-decoration: none;*/
+        /*    color: #FFFFFF;*/
+        /*    font-weight: 500;*/
+        /*    transition: color 0.3s ease;*/
+        /*}*/
+        /*.footer-links a:hover {*/
+        /*    color: #00994C;*/
+        /*}*/
+        /*.social-icons {*/
+        /*    display: flex;*/
+        /*    gap: 20px;*/
+        /*}*/
+        /*.social-icons a {*/
+        /*    color: #FFFFFF;*/
+        /*    font-size: 1.5rem;*/
+        /*    transition: color 0.3s ease;*/
+        /*}*/
+        /*.social-icons a:hover {*/
+        /*    color: #00994C;*/
+        /*}*/
+        /*.copyright {*/
+        /*    text-align: center;*/
+        /*    margin-top: 20px;*/
+        /*    font-size: 0.9rem;*/
+        /*    color: #666;*/
+        /*}*/
+.footer{
+	background: #025a2d;
+	color: #e9f1f2;
+	font-style: normal ;
+	font-size: 14px;
+	vertical-align: center;
+}
+.footer-block{
+	display: flex;
+	justify-content: space-between;
+	height: 80px;
+	padding: 20px 0;
+	align-items: center;
+}
+.social span{
+	margin-right: 20px;
+}
+.social span:hover{
+	color: #e9f1f2;
+}
+.social a{
+	margin-right: 8px;
+	text-decoration: none;
+	color: #e9f1f2;;
+    text-align: center;
+    margin-left: 4px;
+    line-height: 22px;
+}
+.social a:hover{
+	width: 16px;
+	height: 16px;
+
+}
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    }
+ .fa-facebook-f:before, .fa-facebook:before {
+    content: "\f09a";}
+ .fa-telegram:before {
+    content: "\f1d8";
+}
+.fa-youtube-play:before {
+    content: "\f16a";
+}
+.fa-instagram:before {
+    content: "\f16d";
+    }
+/*.toTop{*/
+/*	margin-right: 10px;*/
+/*	transition-duration: 200ms;*/
+/*}*/
+#toTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    background: #00994C;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 9999;
+}
+#toTop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#toTop:hover {
+    background: #007A3D;
+}
+
+        /* Animations */
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero .container, .solution .container {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .roadmap-timeline {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .roadmap-timeline::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                Agro AI Maslahatchisi
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Bosh sahifa</a></li>
+                <li><a href="#solution">Yechim</a></li>
+                <li><a href="#features">Xususiyatlar</a></li>
+                <li><a href="#team">Jamoa</a></li>
+                <li><a href="#roadmap">Yo'l xaritasi</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <a href="index_ru.html">RU</a>
+                <a href="index_eng.html">ENG</a>
+                <a href="index_uzb.html" style="color: #00994C;">UZB</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 style="font-size: 2.5rem;">Korporativ mijozlar uchun aqlli AI bank xizmatlari</h1>
+                <p>Agro AI Maslahatchisi biznes tranzaksiyalari, depozitlar va naqd pul oqimini tahlil qilib, aniq kredit, lizing yoki faktoring variantlarini tavsiya qiladi.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">Demo versiya</button>
+                    <button class="btn-secondary">Qanday ishlaydi</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="hero_section1.png" alt="Interactive Dashboard">
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section section-bg-light" id="problem">
+        <div class="container">
+            <h2 class="section-title">Korporativ mijozlar duch keladigan muammolar</h2>
+            <div class="problem-cards">
+                <div class="card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <p>Qishloq xo‘jaligi korxonalari to‘g‘ri kredit yoki faktoring mahsulotini tanlashda qiynaladi</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-clock"></i>
+                    <p>Qo‘lda moliyaviy tahlil qaror qabul qilishni sekinlashtiradi</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-chart-line"></i>
+                    <p>Bizneslar kredit to‘lovlarini aniq prognoz qila olmaydi</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-balance-scale"></i>
+                    <p>Bank mahsulotlari murakkab va solishtirish qiyin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ <section class="section" id="solution">
+        <div class="container">
+            <h2 class="section-title">Agro AI Maslahatchisi</h2>
+            <div class="solution">
+                <div class="solution-text">
+                    <h2>AI bilan moliyaviy tahlillar</h2>
+                    <ul>
+                        <li>AI xarajatlar, depozitlar, tranzaksiya tarixini tahlil qiladi</li>
+                        <li>Biznes turini va naqd pul oqimlarini aniqlaydi</li>
+                        <li>Shaxsiylashtirilgan kredit, lizing yoki faktoring mahsulotlarini tavsiya qiladi</li>
+                        <li>AI prognozi yordamida kredit to‘lov muddatini oldindan aniqlaydi</li>
+                    </ul>
+                    <div class="highlight-box">
+                          Zamonaviy AI moliyaviy texnologiyalari bilan ishlaydi.
+                    </div>
+                </div>
+                <div class="solution-image">
+                    <img src="solution_grey.png" alt="Mock Dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+  <!-- Features Section -->
+    <section class="section section-bg-light" id="features">
+        <div class="container">
+            <h2 class="section-title">Xususiyatlar</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI moliyaviy tahlil</h3>
+                    <p>Mijoz xarajatlari, depozitlar va naqd pul oqimini chuqur tahlil qiladi.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Aqlli kredit tavsiyalari</h3>
+                    <p>Eng optimal shartlar bilan eng yaxshi kredit turini tavsiya qiladi.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>AI kredit to‘lov prognozi</h3>
+                    <p>Mijoz qachon kreditni to‘liq to‘lashi mumkinligini aniqlaydi.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-desktop"></i>
+                    <h3>Korporativ interaktiv Dashboard</h3>
+                    <p>Bank xodimlari va mijozlar uchun chiroyli va intuitiv interfeys.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+  <!-- Team Section -->
+    <section class="section" id="team">
+        <div class="container">
+            <h2 class="section-title">Jamoamiz bilan tanishing</h2>
+            <div class="team">
+                <div class="team-card">
+                    <img src="backend_dev.png" alt="Backend Developer">
+                    <h3>Backend Dasturchi</h3>
+                    <p>Python, Java, DB & AI kurslarini tugatgan</p>
+                    <p>API yaratadi, AI integratsiya qiladi, ma’lumotlarni boshqaradi</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">AI</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="Data_analyst.png" alt="Researcher / Data Analyst">
+                    <h3>Ma’lumot Analitigi</h3>
+                    <p>Python, SQL, ma'lumot tahlili</p>
+                    <p>Bozor tadqiqoti, dataset tuzilishi, raqobatchi tahlili</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                         <span class="skill-tag">StartUp</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="UI_designer.png" alt="UI/UX Designer">
+                    <h3>UI/UX Dizayner</h3>
+                    <p>Figma layout, user flow va prototiplar yaratadi</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Design</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="PM1.png" alt="Product/Project Manager">
+                    <h3>Loyiha Menejeri</h3>
+                    <p>G‘oya, yo‘l xaritasi va taqdimot tayyorlashni boshqaradi</p>
+                    <p>Ish jarayonini va yetkazib berishni nazorat qiladi</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Management</span>
+                        <span class="skill-tag">Strategy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <div id="why-us">
+
+    <div class="why-left">
+        <h2>Nima uchun biz?</h2>
+        <p>
+            Bizning jamoa texnik tajriba, analitik fikrlash
+            va aniq mahsulot maqsadini birlashtiradi —
+            Agrobank uchun samarali AI moliyaviy tavsiya tizimini taqdim etish imkonini beradi.
+        </p>
+        <br>
+        <br>
+       <p class="why-conclusion"  style="color: #FFFFFF;">
+        <span class="cta-icon">💡</span>
+            Birgalikda Agrobank uchun kengaytiriladigan va samarali AI yechim yaratishimiz mumkin.
+        <span class="cta-arrow">→</span>
+       </p>
+
+    </div>
+
+    <div class="why-right">
+
+        <div class="why-item">
+            <strong>Texnik tajriba</strong>
+            <p>Backend dasturchimiz va ma’lumot analitigi Python, Java, DB va AI integratsiyada tajribali.</p>
+        </div>
+
+        <div class="why-item">
+            <strong>Mahsulot tashabbus yo'nalishi</strong>
+            <p>Loyiha menejerimiz yo‘l xaritasini rejalashtiradi, yetkazib berishni boshqaradi va strategik moslikni ta’minlaydi.</p>
+        </div>
+
+        <div class="why-item">
+            <strong>Foydalanuvchiga yo'naltirilgan dizayn</dizayn></strong>
+            <p>UI/UX dizaynerimiz murakkab bank jarayonlarini sodda va intuitiv interfeysga aylantiradi</p>
+        </div>
+
+        <div class="why-item">
+            <strong>Tadqiqot va analitika</strong>
+            <p>Analitigimiz bozor tadqiqotini olib boradi va aniq AI modellari uchun dataset tayyorlaydi</p>
+        </div>
+
+
+    </div>
+  <!-- Roadmap Section -->
+</div>
+    <section class="section section-bg-light" id="roadmap">
+        <div class="container">
+            <h2 class="section-title">Yo'l xaritasi</h2>
+            <div class="roadmap">
+                <div class="roadmap-step">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>G'oya</p>
+                </div>
+                <div class="roadmap-step">
+                    <i class="fas fa-code"></i>
+                    <p>Prototip</p>
+                </div>
+                <div class="roadmap-step">
+                    <i class="fas fa-robot"></i>
+                    <p style="width: 157px;">AI Model Integratsiyasi</p>
+                </div>
+                <div class="roadmap-step">
+                    <i class="fas fa-rocket"></i>
+                    <p>MVP & Test</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <!-- TechStack Section -->
+    <section class="section" id="tech-stack">
+        <div class="container">
+            <h2 class="section-title">Texnologiyalar to'plami</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <i class="fab fa-python"></i>
+                    <p>Python</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-java"></i>
+                    <p>Java</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database"></i>
+                    <p>SQL Databases</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-server"></i>
+                    <p>FastAPI / Spring</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-react"></i>
+                    <p>React / Next.js</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-brain"></i>
+                    <p>Machine Learning</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-cloud"></i>
+                    <p>Bulutli Hosting</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="footer">
+		<div class="container1">
+			<div class="container">
+				<p class="credits">
+					Copyright © 2025  Barcha huquqlar himoyalangan <br>
+	            Ushbu sayt <!-- with <i class="fa fa-heart-o" aria-hidden="true"></i> --> U:Four jamoasi tomonidan tayyorlangan
+				</p>
+				<div class="social">
+					<span>Bizni kuzating</span>
+					<a rel="nofollow" href="https://www.facebook.com" target="blank" title="facebook">
+						<i class="fa fa-facebook"></i>
+					</a>
+					<a rel="nofollow" href="telegram.org" title="telegram" target="blank">
+						<i class="fa fa-telegram"></i>
+					</a>
+					<a rel="nofollow" href="https://www.youtube.com" title="youtube" target="blank">
+						<i class="fa fa-youtube-play"></i>
+					</a>
+					<a rel="nofollow" href="https://www.instagram.com" title="instagram" target="blank">
+						<i class="fa fa-instagram"></i>
+					</a>
+				</div>
+				<div id="toTop" class="toTop">
+                     <a href="#" id="scrollTopBtn">
+                       <i class="fa-solid fa-arrow-up" style="font-size:22px; color:white;"></i>
+                     </a>
+                </div>
+			</div>
+		</div>
+	</footer>
+</body>
+<script>
+    const scrollBtn = document.getElementById("toTop");
+
+    // Scroll bo'lganda tugmani chiqarish
+    window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+            scrollBtn.classList.add("show");
+        } else {
+            scrollBtn.classList.remove("show");
+        }
+    });
+
+    // Bosilganda silliq tepaga qaytarish
+    document.getElementById("scrollTopBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+</html>
