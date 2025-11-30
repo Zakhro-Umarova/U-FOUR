@@ -1024,6 +1024,21 @@
                 display: none;
             }
         }
+		    #show-more-btn {
+		        padding: 10px 22px;
+		        border-radius: 8px;
+		        cursor: pointer;
+		        border: 2px solid #00994C;
+		        background: transparent;
+		        color: #00994C;
+		        transition: 0.3s;
+		
+		    }
+
+    		#show-more-btn:hover {
+		        background: #00994C;
+		        color: white;
+		    }
     </style>
 </head>
 <body>
@@ -1093,25 +1108,33 @@
 	 <!-- Solution Section -->
 	<section class="section" id="solution">
         <div class="container">
-            <h2 class="section-title">Agro AI Advisor</h2>
+            <h2 class="section-title" style="margin-bottom: -30px;">Agro AI Advisor</h2>
             <div class="solution">
                 <div class="solution-text">
                     <h2>AI-Driven Financial Insights</h2>
-                    <ul>
+                    <ul class="solution-list">
                         <li>AI analyzes expenses, deposits, transaction history</li>
                         <li>Identifies business type and cashflow patterns</li>
                         <li>Suggests personalized credit, leasing, or factoring products</li>
                         <li>Predicts loan repayment timeline using AI forecasting</li>
+						<!-- hidden bullets -->
+                        <div id="hidden-points" style="display: none;">                      
 						<li>Analyzes expense and revenue dynamics across different periods, generates financial trend charts, and provides recommendations for effective liquidity and cash-flow management</li>
 						<li>Conducts market analysis based on the client’s business sector and identifies potential buyers and suppliers, offering optimal partnership recommendations</li>
-                    </ul>
-                    <div class="highlight-box">
-                        Powered by advanced AI-driven financial modeling.
-                    </div>
+                   		</div>
+					</ul>
+                    <button id="show-more-btn" class="btn-secondary" style="margin-top: 15px;">
+                    Show more
+               		</button>
+                
+					
                 </div>
                 <div class="solution-image">
                     <img src="solution_grey.png" alt="Mock Dashboard">
-                </div>
+                	<div class="highlight-box">
+                        Powered by advanced AI-driven financial modeling.
+                    </div>
+				</div>
             </div>
         </div>
     </section>
@@ -1150,7 +1173,8 @@
             <div class="team">
                 <div class="team-card">
                     <img src="backend_dev.png" alt="Backend Developer">
-                    <h3>Backend Developer</h3>
+                    <h3 style="color=#141472">Zakhro Umarova</h3>
+					<h3>Backend Developer</h3>
                     <p>Python, Java, DB & AI courses completed</p>
                     <p>Builds API, integrates AI, manages data logic</p>
                     <div class="skill-tags">
@@ -1161,7 +1185,8 @@
                 </div>
                 <div class="team-card">
                     <img src="Data_analyst.png" alt="Researcher / Data Analyst">
-                    <h3>Data Analyst</h3>
+                    <h3 style="color=#141472">Khusan Umarov</h3>
+					<h3>Data Analyst</h3>
                     <p>Python, SQL, data analysis</p>
                     <p>Market research, dataset structure, competitor analysis</p>
                     <div class="skill-tags">
@@ -1173,7 +1198,8 @@
                 </div>
                 <div class="team-card">
                     <img src="UI_designer.png" alt="UI/UX Designer">
-                    <h3>UI/UX Designer</h3>
+                    <h3 style="color=#141472">Fotima Umarova</h3>
+					<h3>UI/UX Designer</h3>
                     <p>Creates Figma layouts, user flows, prototypes</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Figma</span>
@@ -1182,7 +1208,8 @@
                 </div>
                 <div class="team-card">
                     <img src="PM1.png" alt="Product/Project Manager">
-                    <h3>Project Manager</h3>
+                    <h3 style="color=#141472">Abdurasul Umarov</h3>
+					<h3>Project Manager</h3>
                     <p>Manages idea, roadmap, and pitch preparation</p>
                     <p>Ensures smooth workflow and delivery</p>
                     <div class="skill-tags">
@@ -1362,5 +1389,17 @@
         behavior: "smooth"
     });
 });
+	const hiddenPoints = document.getElementById("hidden-points");
+    const showMoreBtn = document.getElementById("show-more-btn");
+
+    showMoreBtn.addEventListener("click", () => {
+        if (hiddenPoints.style.display === "none") {
+            hiddenPoints.style.display = "block";
+            showMoreBtn.textContent = "Hide";
+        } else {
+            hiddenPoints.style.display = "none";
+            showMoreBtn.textContent = "Show more";
+        }
+    });
 </script>
 </html>
