@@ -1025,6 +1025,21 @@
                 display: none;
             }
         }
+			#show-more-btn {
+	        padding: 10px 22px;
+	        border-radius: 8px;
+	        cursor: pointer;
+	        border: 2px solid #00994C;
+	        background: transparent;
+	        color: #00994C;
+	        transition: 0.3s;
+	   
+	    }
+
+		    #show-more-btn:hover {
+		        background: #00994C;
+		        color: white;
+		    }
     </style>
 </head>
 <body>
@@ -1095,25 +1110,31 @@
 <!-- Solution Section --> 
 	<section class="section" id="solution">
         <div class="container">
-            <h2 class="section-title">Agro AI Консультант</h2>
+            <h2 class="section-title" style="margin-bottom: -30px;">Agro AI Консультант</h2>
             <div class="solution">
                 <div class="solution-text">
                     <h2>AI-управляемая финансовая аналитика</h2>
-                    <ul>
+                    <ul class="solution-list">
                         <li>Искусственный интеллект анализирует расходы, депозиты и историю транзакций</li>
                         <li>Определяет тип бизнеса и структуру денежных потоков</li>
                         <li>Рекомендует персональные кредитные, лизинговые и факторинговые продукты</li>
                         <li>Прогнозирует дату полного погашения кредита с помощью AI-моделирования</li>
-						<li>Анализирует динамику расходов и поступлений по периодам, формирует финансовые графики на основе трендов и предоставляет рекомендации по управлению ликвидностью и денежными потоками</li>
+						<!-- hidden bullets -->
+                        <div id="hidden-points" style="display: none;">
+                        <li>Анализирует динамику расходов и поступлений по периодам, формирует финансовые графики на основе трендов и предоставляет рекомендации по управлению ликвидностью и денежными потоками</li>
 						<li>Проводит анализ рынка по направлению деятельности клиента и формирует рекомендации по потенциальным покупателям и поставщикам для оптимального сотрудничества</li>
-                    </ul>
-                    <div class="highlight-box">
-                        Работает на основе продвинутых AI-финансовых моделей.
-                    </div>
+                        </div>
+					</ul>
+                    <button id="show-more-btn" class="btn-secondary" style="margin-top: 15px;">
+                    	Показать больше
+                	</button>
                 </div>
                 <div class="solution-image">
                     <img src="solution_grey.png" alt="Mock Dashboard">
-                </div>
+	                <div class="highlight-box">
+	                   Работает на основе продвинутых AI-финансовых моделей.
+	                </div>
+				</div>
             </div>
         </div>
     </section>
@@ -1122,22 +1143,22 @@
         <div class="container">
             <h2 class="section-title">Возможности</h2>
             <div class="features">
-                <div class="feature-card">
+                <div class="feature-card" style="padding: 15px;">
                     <i class="fas fa-brain"></i>
                     <h3>AI-финансовый анализ</h3>
                     <p>Глубокий анализ расходов, депозитов и денежных потоков клиента.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" style="padding: 15px;">
                     <i class="fas fa-lightbulb"></i>
                     <h3>Умные кредитные рекомендации</h3>
                     <p>Определяет оптимальный тип кредита и условия.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" style="padding: 15px;">
                     <i class="fas fa-chart-bar"></i>
                     <h3>AI-прогнозирование погашения кредита</h3>
                     <p>Рассчитывает, когда клиент сможет полностью закрыть кредит.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature-card" style="padding: 15px;">
                     <i class="fas fa-desktop"></i>
                     <h3>Интеллектуальная корпоративная панель</h3>
                     <p>Удобный и интуитивный интерфейс для сотрудников банка и клиентов.</p>
@@ -1364,5 +1385,17 @@
     });
 });
 	
+	const hiddenPoints = document.getElementById("hidden-points");
+    const showMoreBtn = document.getElementById("show-more-btn");
+
+    showMoreBtn.addEventListener("click", () => {
+        if (hiddenPoints.style.display === "none") {
+            hiddenPoints.style.display = "block";
+            showMoreBtn.textContent = "Скрыть";
+        } else {
+            hiddenPoints.style.display = "none";
+            showMoreBtn.textContent = "Показать больше";
+        }
+    });	
 </script>
 </html>
