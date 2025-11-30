@@ -489,7 +489,7 @@
                 gap: 20px;
             }
         }
-        /*Old version */
+        /*Old 1.0. version */
 
         /*.container {*/
         /*    max-width: 1200px;*/
@@ -905,12 +905,7 @@
         .tech-icons i:hover {
             transform: scale(1.1);
         }
-        /* !*Footer*!*/
-        /*footer {*/
-        /*    background-color: #0A0A0A;*/
-        /*    color: #FFFFFF;*/
-        /*    padding: 50px 0;*/
-        /*}*/
+
         footer .container {
             display: flex;
             justify-content: space-between;
@@ -969,10 +964,7 @@
 .fa-instagram:before {
     content: "\f16d";
     }
-/*.toTop{*/
-/*	margin-right: 10px;*/
-/*	transition-duration: 200ms;*/
-/*}*/
+
 #toTop {
     position: fixed;
     bottom: 25px;
@@ -1052,7 +1044,7 @@
             </ul>
             <div class="lang-switcher">
                 <a href="index_ru.html" style="color: #00994C;">RU</a>
-                <a href="index.html" >ENG</a>
+                <a href="index.html">ENG</a>
                 <a href="index_uzb.html">UZB</a>
             </div>
         </div>
@@ -1066,8 +1058,8 @@
                 <p>Agro AI Advisor анализирует бизнес-транзакции, депозиты и денежные потоки, чтобы точно рекомендовать кредитные, лизинговые и факторинговые продукты.
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn-primary">Получить демо</button>
-                    <button class="btn-secondary">Как это работает</button>
+                    <button class="btn-primary" id="get-demo-btn">Получить демо</button>
+                    <button class="btn-secondary" id="how-it-works-btn">Как это работает</button>
                 </div>
             </div>
             <div class="hero-image">
@@ -1100,7 +1092,8 @@
             </div>
         </div>
     </section>
- <section class="section" id="solution">
+<!-- Solution Section --> 
+	<section class="section" id="solution">
         <div class="container">
             <h2 class="section-title">Agro AI Консультант</h2>
             <div class="solution">
@@ -1111,6 +1104,8 @@
                         <li>Определяет тип бизнеса и структуру денежных потоков</li>
                         <li>Рекомендует персональные кредитные, лизинговые и факторинговые продукты</li>
                         <li>Прогнозирует дату полного погашения кредита с помощью AI-моделирования</li>
+						<li>Анализирует динамику расходов и поступлений по периодам, формирует финансовые графики на основе трендов и предоставляет рекомендации по управлению ликвидностью и денежными потоками</li>
+						<li>Проводит анализ рынка по направлению деятельности клиента и формирует рекомендации по потенциальным покупателям и поставщикам для оптимального сотрудничества</li>
                     </ul>
                     <div class="highlight-box">
                         Работает на основе продвинутых AI-финансовых моделей.
@@ -1358,5 +1353,16 @@
             behavior: "smooth"
         });
     });
+
+	document.getElementById("get-demo-btn").addEventListener("click", function () {
+    alert("Проект находится в стадии разработки. Следите за новостями и поддержите команду U:Four!");
+    });
+
+    document.getElementById("how-it-works-btn").addEventListener("click", function () {
+    document.getElementById("roadmap").scrollIntoView({
+        behavior: "smooth"
+    });
+});
+	
 </script>
 </html>
