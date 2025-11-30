@@ -205,6 +205,12 @@
         .team-card h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
+			color: #07073e;
+        }
+		.team-card h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+			
         }
         .team-card p {
             font-size: 0.9rem;
@@ -1025,6 +1031,21 @@
                 display: none;
             }
         }
+			 #show-more-btn {
+	        padding: 10px 22px;
+	        border-radius: 8px;
+	        cursor: pointer;
+	        border: 2px solid #00994C;
+	        background: transparent;
+	        color: #00994C;
+	        transition: 0.3s;
+	
+	    }
+
+		    #show-more-btn:hover {
+		        background: #00994C;
+		        color: white;
+		    }
     </style>
 </head>
 <body>
@@ -1094,25 +1115,32 @@
  	<!-- Solution Section -->
 	<section class="section" id="solution">
         <div class="container">
-            <h2 class="section-title">Agro AI Maslahatchisi</h2>
+            <h2 class="section-title" style="margin-bottom: -30px;">Agro AI Maslahatchisi</h2>
             <div class="solution">
                 <div class="solution-text">
                     <h2>AI bilan moliyaviy tahlillar</h2>
-                    <ul>
+                    <ul class="solution-list">
                         <li>AI xarajatlar, depozitlar, tranzaksiya tarixini tahlil qiladi</li>
                         <li>Biznes turini va naqd pul oqimlarini aniqlaydi</li>
                         <li>Shaxsiylashtirilgan kredit, lizing yoki faktoring mahsulotlarini tavsiya qiladi</li>
                         <li>AI prognozi yordamida kredit to‘lov muddatini oldindan aniqlaydi</li>
+						<!-- YASHIRIN PUNKTLAR -->
+                        <div id="hidden-points" style="display: none;">
 						<li>Xarajat va tushumlar dinamikasini davrlar kesimida tahlil qiladi, trendlar asosida moliyaviy grafiklar yaratadi va likvidlik hamda kassa oqimini boshqarish bo‘yicha tavsiyalar beradi</li>
 						<li>Mijoz faoliyat yo‘nalishi bo‘yicha bozorni tahlil qiladi va potensial xaridorlar hamda yetkazib beruvchilar bo‘yicha optimal hamkorlik tavsiyalarini shakllantiradi</li>
-                    </ul>
-                    <div class="highlight-box">
-                          Zamonaviy AI moliyaviy texnologiyalari bilan ishlaydi.
-                    </div>
+                    	</div>
+					</ul>
+					<button id="show-more-btn" class="btn-secondary" style="margin-top: 15px;">
+                    	Batafsil
+                	</button>
+                    
                 </div>
                 <div class="solution-image">
                     <img src="solution_grey.png" alt="Mock Dashboard">
-                </div>
+                	<div class="highlight-box">
+                       Zamonaviy AI moliyaviy texnologiyalari bilan ishlaydi.
+                    </div>
+				</div>
             </div>
         </div>
     </section>
@@ -1151,7 +1179,8 @@
             <div class="team">
                 <div class="team-card">
                     <img src="backend_dev.png" alt="Backend Developer">
-                    <h3>Backend Dasturchi</h3>
+                    <h3>Zaxro Umarova</h3>
+					<h4>Backend Dasturchi</h4>
                     <p>Python, Java, DB & AI kurslarini tugatgan</p>
                     <p>API yaratadi, AI integratsiya qiladi, ma’lumotlarni boshqaradi</p>
                     <div class="skill-tags">
@@ -1162,7 +1191,8 @@
                 </div>
                 <div class="team-card">
                     <img src="Data_analyst.png" alt="Researcher / Data Analyst">
-                    <h3>Ma’lumot Analitigi</h3>
+                    <h3>Xusan Umarov</h3>
+					<h4>Ma’lumot Analitigi</h4>
                     <p>Python, SQL, ma'lumot tahlili</p>
                     <p>Bozor tadqiqoti, dataset tuzilishi, raqobatchi tahlili</p>
                     <div class="skill-tags">
@@ -1173,7 +1203,8 @@
                 </div>
                 <div class="team-card">
                     <img src="UI_designer.png" alt="UI/UX Designer">
-                    <h3>UI/UX Dizayner</h3>
+                    <h3>Fotima Umarova</h3>
+					<h4>UI/UX Dizayner</h4>
                     <p>Figma layout, user flow va prototiplar yaratadi</p>
                     <div class="skill-tags">
                         <span class="skill-tag">Figma</span>
@@ -1182,7 +1213,8 @@
                 </div>
                 <div class="team-card">
                     <img src="PM1.png" alt="Product/Project Manager">
-                    <h3>Loyiha Menejeri</h3>
+                    <h3>Abdurasul Umarov</h3>
+					<h4>Loyiha Menejeri</h4>
                     <p>G‘oya, yo‘l xaritasi va taqdimot tayyorlashni boshqaradi</p>
                     <p>Ish jarayonini va yetkazib berishni nazorat qiladi</p>
                     <div class="skill-tags">
@@ -1360,7 +1392,19 @@
     document.getElementById("how-it-works-btn").addEventListener("click", function () {
     document.getElementById("roadmap").scrollIntoView({
         behavior: "smooth"
+    	});
+	});
+	const hiddenPoints = document.getElementById("hidden-points");
+    const showMoreBtn = document.getElementById("show-more-btn");
+
+    showMoreBtn.addEventListener("click", () => {
+        if (hiddenPoints.style.display === "none") {
+            hiddenPoints.style.display = "block";
+            showMoreBtn.textContent = "Berkitish";
+        } else {
+            hiddenPoints.style.display = "none";
+            showMoreBtn.textContent = "Batafsil";
+        }
     });
-});
 </script>
 </html>
