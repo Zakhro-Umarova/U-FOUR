@@ -489,7 +489,7 @@
                 gap: 20px;
             }
         }
-        /*Old version */
+        /*Old 1.0. version */
 
         /*.container {*/
         /*    max-width: 1200px;*/
@@ -964,10 +964,7 @@
 .fa-instagram:before {
     content: "\f16d";
     }
-/*.toTop{*/
-/*	margin-right: 10px;*/
-/*	transition-duration: 200ms;*/
-/*}*/
+
 #toTop {
     position: fixed;
     bottom: 25px;
@@ -1060,8 +1057,8 @@
                 <h1 style="font-size: 2.5rem;">Korporativ mijozlar uchun aqlli AI bank xizmatlari</h1>
                 <p>Agro AI Maslahatchisi biznes tranzaksiyalari, depozitlar va naqd pul oqimini tahlil qilib, aniq kredit, lizing yoki faktoring variantlarini tavsiya qiladi.</p>
                 <div class="hero-buttons">
-                    <button class="btn-primary">Demo versiya</button>
-                    <button class="btn-secondary">Qanday ishlaydi</button>
+                    <button class="btn-primary" id="get-demo-btn">Demo versiya</button>
+                    <button class="btn-secondary" id="how-it-works-btn">Qanday ishlaydi</button>
                 </div>
             </div>
             <div class="hero-image">
@@ -1094,7 +1091,8 @@
             </div>
         </div>
     </section>
- <section class="section" id="solution">
+ 	<!-- Solution Section -->
+	<section class="section" id="solution">
         <div class="container">
             <h2 class="section-title">Agro AI Maslahatchisi</h2>
             <div class="solution">
@@ -1105,6 +1103,8 @@
                         <li>Biznes turini va naqd pul oqimlarini aniqlaydi</li>
                         <li>Shaxsiylashtirilgan kredit, lizing yoki faktoring mahsulotlarini tavsiya qiladi</li>
                         <li>AI prognozi yordamida kredit to‘lov muddatini oldindan aniqlaydi</li>
+						<li>Xarajat va tushumlar dinamikasini davrlar kesimida tahlil qiladi, trendlar asosida moliyaviy grafiklar yaratadi va likvidlik hamda kassa oqimini boshqarish bo‘yicha tavsiyalar beradi</li>
+						<li>Mijoz faoliyat yo‘nalishi bo‘yicha bozorni tahlil qiladi va potensial xaridorlar hamda yetkazib beruvchilar bo‘yicha optimal hamkorlik tavsiyalarini shakllantiradi</li>
                     </ul>
                     <div class="highlight-box">
                           Zamonaviy AI moliyaviy texnologiyalari bilan ishlaydi.
@@ -1352,5 +1352,15 @@
             behavior: "smooth"
         });
     });
+
+	  document.getElementById("get-demo-btn").addEventListener("click", function () {
+    alert("Loyiha hozir ishlab chiqilish jarayonida. Yangiliklar uchun bizni kuzatishda davom eting va U:Four jamoasini qo'llab-quvvatlang!");
+    });
+
+    document.getElementById("how-it-works-btn").addEventListener("click", function () {
+    document.getElementById("roadmap").scrollIntoView({
+        behavior: "smooth"
+    });
+});
 </script>
 </html>
